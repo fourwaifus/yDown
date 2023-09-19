@@ -3,6 +3,29 @@
 
 # initial module
 import streamlit as st
-import pytube
 from telebot import *
+from pytube import YouTube
+import os
 
+st.write("debugging is running....")
+
+api_token = ""
+bot = TeleBot(api_token)
+
+@bot.message_handler(commands=['mp4'])
+def send_welcome(message):
+        bot.reply_to(message, "Howdy, how are you doing?")
+        link = message.text.replace("/mp4 ", "")
+        bot.reply_to(message, link)
+		yt = YouTube(link)
+        vid = yt.streams.get_highest_resolution()
+        vid.download()
+
+        for i in os.listdir():
+                if i.endswith(".mp4"):
+                        print(i)
+                        video = open(i, "rb")
+                        bot.send_video(message.chat.id, video)
+                        os.remove(i)
+
+bot.polling()
