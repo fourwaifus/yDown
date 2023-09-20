@@ -38,7 +38,7 @@ def mp3(message):
 def send_welcome(message):
 	bot.reply_to(message, "Sabar Ya!")
 	link = message.text.replace("/mp4 ", "")
-	bot.send_message(message.chat.id, "Tunggu sebentar"
+	bot.send_message(message.chat.id, "Tunggu sebentar")
 	yt = YouTube(link)
 	vid = yt.streams.get_highest_resolution()
 	vid.download()
