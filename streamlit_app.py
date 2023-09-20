@@ -13,13 +13,13 @@ api_token = "6157246761:AAHwtXyoWZBrMGs8JKfUsvthJakV9q59rdM"
 bot = TeleBot(api_token)
 
 @bot.message_handler(commands=['start'])
-def send_hello(message):
+def staRt(message):
     bot.send_message(message.chat.id, "Haloo Anjay!")
     
 
 @bot.message_handler(commands=['mp3'])
-def mp3(message):
-    bot.reply_to(message, "Baik perminta'an anda akan kami proses")
+def mP3(message):
+    bot.send_message(message.chat.id, "Baik perminta'an anda akan kami proses")
     link = message.text.replace("/mp3 ", "")
     mp3_p = YouTube(link)
     mp3_o = mp3_p.streams.filter(only_audio=True).first()
@@ -37,11 +37,10 @@ def mp3(message):
                 os.remove(i)
             except:
                 print("gagal menghapus!")
-    
-    
+
 @bot.message_handler(commands=['mp4'])
-def send_welcome(message):
-	bot.reply_to(message, "Sabar Ya!")
+def mP4(message):
+	bot.send_message(message.chat.id, "Sabar Ya!")
 	link = message.text.replace("/mp4 ", "")
 	bot.send_message(message.chat.id, "Tunggu sebentar")
 	yt = YouTube(link)
@@ -52,10 +51,14 @@ def send_welcome(message):
 		if i.endswith(".mp4"):
 			print(i)
 			video = open(i, "rb")
-			bot.send_video(message.chat.id, video)
 			try:
+			    bot.send_video(message.chat.id, video)
 				os.remove(i)
 			except:
 				print("gagal menghapus!")
 
 bot.polling()
+
+for file in os.listdir():
+    if file.endswith(".mp4"):
+        print(file)
