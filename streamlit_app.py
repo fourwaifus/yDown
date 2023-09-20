@@ -26,6 +26,9 @@ def send_welcome(message):
 			print(i)
 			video = open(i, "rb")
 			bot.send_video(message.chat.id, video)
-			os.remove(i)
+			try:
+				os.remove(i)
+			except:
+				print("gagal menghapus!")
 
 bot.polling()
