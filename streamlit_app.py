@@ -31,9 +31,9 @@ def mp3(message):
     for i in os.listdir():
         if i.endswith(".mp3"):
             print(i)
-            video = open(i, "rb")
-            bot.send_audio(message.chat.id, audio)
+            audio = open(i, "rb")
             try:
+                bot.send_audio(message.chat.id, audio)
                 os.remove(i)
             except:
                 print("gagal menghapus!")
