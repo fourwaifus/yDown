@@ -58,7 +58,3 @@ def mP4(message):
 				print("gagal menghapus!")
 
 bot.polling()
-
-for file in os.listdir():
-    if file.endswith(".mp4"):
-        print(file)
