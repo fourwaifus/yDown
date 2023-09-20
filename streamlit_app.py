@@ -13,8 +13,8 @@ api_token = "6157246761:AAHwtXyoWZBrMGs8JKfUsvthJakV9q59rdM"
 bot = TeleBot(api_token)
 
 @bot.message_handler(commands=['mp3'])
-	def mp3(message):
-	bot.reply_to(message, "Baik perminta'an anda akan kami proses")
+def mp3(message):
+    bot.reply_to(message, "Baik perminta'an anda akan kami proses")
     link = message.text.replace("/mp3 ", "")
     mp3_p = YouTube(link)
     mp3_o = mp3_p.streams.filter(only_audio=True).first()
