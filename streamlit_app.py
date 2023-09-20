@@ -53,7 +53,7 @@ def mP4(message):
 			video = open(i, "rb")
 			try:
 			    bot.send_video(message.chat.id, video)
-				os.remove(i)
+			    os.remove(i)
 			except:
 				print("gagal menghapus!")
 
