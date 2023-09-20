@@ -24,14 +24,14 @@ def mp3(message):
     os.rename(mp3_d, mp3_f)
 
     for i in os.listdir():
-		if i.endswith(".mp3"):
-			print(i)
-			video = open(i, "rb")
-			bot.send_audio(message.chat.id, audio)
-			try:
-				os.remove(i)
-			except:
-				print("gagal menghapus!")
+        if i.endswith(".mp3"):
+            print(i)
+            video = open(i, "rb")
+            bot.send_audio(message.chat.id, audio)
+            try:
+                os.remove(i)
+            except:
+                print("gagal menghapus!")
     
     
 @bot.message_handler(commands=['mp4'])
