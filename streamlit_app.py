@@ -23,14 +23,14 @@ def mP3(message):
     link = message.text.replace("/mp3 ", "")
     mp3_p = YouTube(link)
     mp3_o = mp3_p.streams.filter(only_audio=True).first()
-    mp3_d = mp3_o.download(output_path=".")
+    mp3_d = mp3_o.download()
     base, ext = os.path.splitext(mp3_d)
     mp3_f = base + '.mp3'
     os.rename(mp3_d, mp3_f)
 
     for i in os.listdir():
         if i.endswith(".mp3"):
-            print(i)
+            bot.send_message(message.chat.id, i)
             audio = open(i, "rb")
             try:
                 bot.send_audio(message.chat.id, audio)
