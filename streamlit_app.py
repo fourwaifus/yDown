@@ -12,6 +12,11 @@ st.write("debugging is running....")
 api_token = "6157246761:AAHwtXyoWZBrMGs8JKfUsvthJakV9q59rdM"
 bot = TeleBot(api_token)
 
+@bot.message_handler(commands=['start'])
+def send_hello(message):
+    bot.send_message(message.chat.id, "Haloo Anjay!")
+    
+
 @bot.message_handler(commands=['mp3'])
 def mp3(message):
     bot.reply_to(message, "Baik perminta'an anda akan kami proses")
